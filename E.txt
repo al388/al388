@@ -8,7 +8,12 @@ print("""\033[0;97m░█████╗░░█████╗░░███�
 ░█████╔╝╚█████╔╝╚█████╔╝██╗╚█████╔╝██║░░░░░██████╔╝
 ░╚════╝░░╚════╝░░╚════╝░╚═╝░╚════╝░╚═╝░░░░░╚═════╝░""")
 def ops ():
-	user=input("\033[1;30m[\033[0;37m?\033[1;30m] username :\033[0;37m")
+	user=input("\033[1;30m[\033[0;37m?\033[1;30m] username or url user :\033[0;37m")
+	try:
+		user=user.split("/")[3]
+		user=user.split("?")[0]
+	except:
+		pass
 	url = "https://i.instagram.com:443/api/v1/users/lookup/"
 	cookies = {"mid": "XOSINgABAAG1IDmaral3noOozrK0rrNSbPuSbzHq"}
 	headers = {"Connection": "close", "X-IG-Connection-Type": "WIFI", "X-IG-Capabilities": "3R4=",
