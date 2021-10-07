@@ -1,0 +1,95 @@
+import requests,os
+from time import sleep
+os.system('cls' if os.name == 'nt' else 'clear')#DOOM
+print("""\033[0;97m░█████╗░░█████╗░░█████╗░░░░░█████╗░██████╗░░██████╗
+██╔══██╗██╔═══╝░██╔══██╗░░░██╔══██╗██╔══██╗██╔════╝
+╚██████║██████╗░╚█████╔╝░░░██║░░██║██████╔╝╚█████╗░
+░╚═══██║██╔══██╗██╔══██╗░░░██║░░██║██╔═══╝░░╚═══██╗
+░█████╔╝╚█████╔╝╚█████╔╝██╗╚█████╔╝██║░░░░░██████╔╝
+░╚════╝░░╚════╝░░╚════╝░╚═╝░╚════╝░╚═╝░░░░░╚═════╝░""")
+def ops ():
+	user=input("\033[1;30m[\033[0;37m?\033[1;30m] username :\033[0;37m")
+	url = "https://i.instagram.com:443/api/v1/users/lookup/"
+	cookies = {"mid": "XOSINgABAAG1IDmaral3noOozrK0rrNSbPuSbzHq"}
+	headers = {"Connection": "close", "X-IG-Connection-Type": "WIFI", "X-IG-Capabilities": "3R4=",
+           "Accept-Language": "ar-AE",
+           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+           "User-Agent": "Instagram 99.4.0 S3od_al3nzi (Dmaral3noOoz)",
+           "Accept-Encoding": "gzip, deflate"}
+	data = {"signed_body": "35a2d547d3b6ff400f713948cdffe0b789a903f86117eb6e2f3e573079b2f038.{\"q\":\"%s\"}" % user }
+	try:
+		re = requests.post(url, headers=headers, cookies=cookies, data=data)
+		if re.status_code == 200:
+			pass
+		elif re.status_code == 409 or 404:
+			print("\033[1;31m[!] username bad !")
+			ops()
+		elif re.status_code == 429:
+			print("\033[1;31m[!] wait 5m")
+			sleep(60*5)
+			ops()
+		info = re.json()
+	except:
+		print("\033[1;31m[!] there is no Internet")
+		print("\033[1;90m="*20)
+		ops()
+	try:
+		print("\033[1;30m[\033[0;37m$\033[1;30m] Email :\033[1;32m "+info['obfuscated_email'])
+		m1=(user[0])
+		m2=(user[-1])
+		s=info["obfuscated_email"].split("@")[0]
+		m3=(s[0])
+		m4=(s[-1])
+		if m1 == m3 and m2 == m4:
+			if '@yahoo.com' in info["obfuscated_email"]:
+				s1="@yahoo.com"
+			elif '@gmail.com' in info["obfuscated_email"]:
+				s1="@gmail.com"
+			elif "@aol.com" in info["obfuscated_email"]:
+				s1="@aol.com"
+			elif "@hotmail.com" in info["obfuscated_email"]:
+				s1="@hotmail.com"
+			else:
+				s1="@"+info["obfuscated_email"].split("@")[1]
+			if '*' in s1:
+				print("\033[1;30m[\033[0;37m$\033[1;30m] Available : \033[1;31mNO")
+			else:
+				eml=user+s1
+				if ".com" in eml:
+					pass
+				else:
+					eml=user+s1+".com"
+				p=requests.get("https://jftv.pythonanywhere.com/email="+eml).text
+				if "False" in p:
+					print("\033[1;30m[\033[0;37m$\033[1;30m] Available : \033[1;32mYES")
+					print("\033[1;30m[\033[0;37m$\033[1;30m] Email Available :\033[1;32m "+eml)
+				else:
+					print("\033[1;30m[\033[0;37m$\033[1;30m] Available : \033[1;31mNO")
+			
+		else:
+			print("\033[1;30m[\033[0;37m$\033[1;30m] Available : \033[1;31mNO")
+	except:
+		print("\033[1;30m[\033[0;37m$\033[1;30m] Email :\033[1;31m False")
+	try:
+		if info['obfuscated_phone']:
+			print("\033[1;30m[\033[0;37m$\033[1;30m] Phone number :\033[1;32m "+ info['obfuscated_phone'])
+		else:
+			print("\033[1;30m[\033[0;37m$\033[1;30m] Phone number : \033[1;31mFalse")
+	except:
+		print("\033[1;30m[\033[0;37m$\033[1;30m] Phone number : \033[1;31mFalse")
+	try:
+		iid=info['user_id']
+		print(f"\033[1;30m[\033[0;37m$\033[1;30m] user id :\033[1;32m {iid}")
+	except:
+		print("\033[1;30m[\033[0;37m$\033[1;30m] user id : \033[1;31mFalse")
+	try:
+		uid=info['user_id']
+		x=requests.get(f"https://o7aa.pythonanywhere.com/?id={uid}").text
+		x1=str(x).split('"data": ')[1]
+		x2=str(x1).split(', "telegram":')[0]
+		print("\033[1;30m[\033[0;37m$\033[1;30m] data :\033[1;32m "+x2)
+	except:
+		print("\033[1;30m[\033[0;37m$\033[1;30m] data : \033[1;31mFalse ")
+while True:
+	ops()
+	print("\033[1;90m="*20)
