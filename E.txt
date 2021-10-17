@@ -5,7 +5,7 @@ print("""\033[0;97m𝑭𝑶𝑳𝑳𝑶𝑾 𝑴𝑬 𝑶𝑵 𝑰𝑵𝑺𝑻�
 if "off" == "off":
 	print("[!] OFF")
 	input('')
-	exit
+	exit()
 else:
 	print("i")
 def ops ():
