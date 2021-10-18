@@ -1,10 +1,11 @@
-import requests,os
+import requests,oswebbrowser
 from time import sleep
 os.system('cls' if os.name == 'nt' else 'clear')#DOOM
 print("""\033[0;97m𝑭𝑶𝑳𝑳𝑶𝑾 𝑴𝑬 𝑶𝑵 𝑰𝑵𝑺𝑻𝑨 : @𝑴0𝑩.𝑺𝑻𝑶𝑹𝑬\n\033[1;34m𝐈𝐟 𝐲𝐨𝐮 𝐡𝐚𝐯𝐞 𝐚 𝐩𝐫𝐨𝐛𝐥𝐞𝐦, 𝐭𝐞𝐥𝐥 𝐦𝐞 𝐨𝐧 𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦""")
 if "off" == "off":
 	print("[!] OFF")
 	input('')
+        webbrowser.open("https://t.me/m0bstore")
 	exit()
 else:
 	print("i")
