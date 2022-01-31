@@ -1,5 +1,6 @@
 import requests,uuid
 print("\033[0;97mINSTA : DOOM.OLD\n\033[1;34mIf you have a problem tell me on Instagram")
+def ops ():
 	user=input("\033[1;30m[\033[0;37m?\033[1;30m] username : \033[0;37m")
 	data = {
             "_csrftoken": "",
@@ -9,13 +10,11 @@ print("\033[0;97mINSTA : DOOM.OLD\n\033[1;34mIf you have a problem tell me on In
         }
 	head = {"user-agent": "Instagram 99.4.0 mob_ops (mntgr_mod)"}
 	req=requests.post(url="https://i.instagram.com/api/v1/accounts/send_password_reset/",headers =head,data=data )
-	print(req.status_code)
-	i=req.json()
 	if req.status_code== 429:
 		print("\033[1;30m</> \033[1;31mWait a few minutes")
-	elif 404:
+	elif req.status_code==404:
 		print("\033[1;30m</> \033[1;31mNo usere found")
-	elif 200:
+	elif req.status_code==200:
 		print("\033[1;30m</> \033[1;32mDONE")
-	print(req.text)
+	ops()
 ops()
