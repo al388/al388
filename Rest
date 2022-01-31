@@ -1,7 +1,5 @@
 import requests,uuid
-print("\033[0;97mINSTA : M0B.STORE\n\033[1;34mIf you have a problem tell me on Instagram")
-print("\033[1;30m[\033[0;37m$\033[1;30m] \033[1;32mمتوفر انشاءات 2012 عند > ""@M0B.STORE في الانستا")
-def ops ():
+print("\033[0;97mINSTA : DOOM.OLD\n\033[1;34mIf you have a problem tell me on Instagram")
 	user=input("\033[1;30m[\033[0;37m?\033[1;30m] username : \033[0;37m")
 	data = {
             "_csrftoken": "",
